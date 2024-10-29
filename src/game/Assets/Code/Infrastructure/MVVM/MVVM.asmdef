@@ -1,0 +1,20 @@
+{
+    "name": "MVVM",
+    "rootNamespace": "",
+    "references": [
+        "Zenject",
+        "Unity.Addressables",
+        "Resource",
+        "UniTask",
+        "ObjectPool"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
