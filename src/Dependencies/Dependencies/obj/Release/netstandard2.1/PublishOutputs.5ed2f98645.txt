@@ -1,0 +1,9 @@
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/Dependencies.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/Dependencies.deps.json
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/Dependencies.pdb
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/Castle.Core.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/FluentAssertions.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/NSubstitute.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/System.Diagnostics.EventLog.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/System.Security.Principal.Windows.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/publish/System.Threading.Tasks.Extensions.dll

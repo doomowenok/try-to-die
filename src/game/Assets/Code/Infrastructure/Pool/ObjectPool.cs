@@ -36,6 +36,9 @@ namespace Code.Infrastructure.Pool
             _pools[typeof(TPoolable)].Push(instance);
         }
 
+        public int GetSize<TPoolable>() where TPoolable : class, IPoolable => 
+            !_pools.TryGetValue(typeof(TPoolable), out Stack<IPoolable> pool) ? 0 : pool.Count;
+
         public void Clear<TPoolable>() where TPoolable : class, IPoolable
         {
             if (_pools.TryGetValue(typeof(TPoolable), out Stack<IPoolable> collection))

@@ -79,3 +79,7 @@ src/CustomGenerators/CustomGenerators/KSyndicate.CustomGenerators.Plugins/bin
 # Temporary auto-generated Android Assets
 /src/game/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /src/game/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+.DS_Store
+/src/Dependencies/.idea
+/src/Dependencies/bin
