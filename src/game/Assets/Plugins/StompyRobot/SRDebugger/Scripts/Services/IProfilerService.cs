@@ -12,17 +12,8 @@ namespace SRDebugger.Services
     public static class ProfilerServiceSelector
     {
         [ServiceSelector(typeof(IProfilerService))]
-        public static Type GetProfilerServiceType()
-        {
-#if UNITY_2018_1_OR_NEWER
-            if(GraphicsSettings.renderPipelineAsset != null)
-            {
-                return typeof(SRPProfilerService);
-            }
-#endif
-
-            return typeof(ProfilerServiceImpl);
-        }
+        public static Type GetProfilerServiceType() => 
+            GraphicsSettings.defaultRenderPipeline != null ? typeof(SRPProfilerService) : typeof(ProfilerServiceImpl);
     }
 
     public struct ProfilerFrame

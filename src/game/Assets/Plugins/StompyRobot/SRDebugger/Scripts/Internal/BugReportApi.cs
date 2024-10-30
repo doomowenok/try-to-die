@@ -1,6 +1,4 @@
-﻿
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using UnityEngine.Networking;
 
 #if NETFX_CORE
@@ -97,10 +95,7 @@ namespace SRDebugger.Internal
                 ErrorMessage = "Error building bug report request.";
                 Debug.LogError(e);
 
-                if (_webRequest != null)
-                {
-                    _webRequest.Dispose();
-                }
+                _webRequest?.Dispose();
 
                 SetCompletionState(false);
             }
@@ -110,18 +105,10 @@ namespace SRDebugger.Internal
                 SetCompletionState(false);
                 yield break;
             }
-
-#if !UNITY_2017_2_OR_NEWER
-            yield return _webRequest.Send();
-#else
+            
             yield return _webRequest.SendWebRequest();
-#endif
 
-#if !UNITY_2017_1_OR_NEWER
-            if(_webRequest.isError)
-#else
-                if (_webRequest.isNetworkError)
-#endif
+            if (_webRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 ErrorMessage = "Request Error: " + _webRequest.error;
                 SetCompletionState(false);

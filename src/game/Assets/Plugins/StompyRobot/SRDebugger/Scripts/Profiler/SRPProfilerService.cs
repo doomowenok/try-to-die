@@ -1,4 +1,6 @@
-﻿#if UNITY_2018_1_OR_NEWER
+﻿using System.Collections.Generic;
+
+#if UNITY_2018_1_OR_NEWER
 
 namespace SRDebugger.Profiler
 {
@@ -8,11 +10,7 @@ namespace SRDebugger.Profiler
     using SRF;
     using SRF.Service;
     using UnityEngine;
-#if UNITY_2019_3_OR_NEWER
     using UnityEngine.Rendering;
-#else
-    using UnityEngine.Experimental.Rendering;
-#endif
 
     public class SRPProfilerService : SRServiceBase<IProfilerService>, IProfilerService
     {
@@ -50,12 +48,17 @@ namespace SRDebugger.Profiler
             CachedTransform.SetParent(Hierarchy.Get("SRDebugger"), true);
 
 #if UNITY_2019_3_OR_NEWER
-            RenderPipelineManager.beginFrameRendering += RenderPipelineOnBeginFrameRendering;
+            RenderPipelineManager.beginContextRendering += RenderPipelineOnBeginFrameRendering;
 #else
             RenderPipeline.beginFrameRendering += RenderPipelineOnBeginFrameRendering;
 #endif
 
             StartCoroutine(EndOfFrameCoroutine());
+        }
+
+        private void RenderPipelineOnBeginFrameRendering(ScriptableRenderContext context, List<Camera> cameras)
+        {
+            _renderStartTime = _stopwatch.Elapsed.TotalSeconds;
         }
 
         protected override void Update()
@@ -69,7 +72,7 @@ namespace SRDebugger.Profiler
             {
                 var frame = FrameBuffer.Back();
                 frame.FrameTime = Time.unscaledDeltaTime;
-                FrameBuffer[FrameBuffer.Count - 1] = frame;
+                FrameBuffer[^1] = frame;
             }
 
             LastFrameTime = Time.unscaledDeltaTime;
@@ -109,15 +112,6 @@ namespace SRDebugger.Profiler
         private void OnLateUpdate()
         {
             _updateDuration = _stopwatch.Elapsed.TotalSeconds;
-        }
-
-#if UNITY_2019_3_OR_NEWER
-        private void RenderPipelineOnBeginFrameRendering(ScriptableRenderContext context, Camera[] cameras)
-#else
-        private void RenderPipelineOnBeginFrameRendering(Camera[] obj)
-#endif
-        {
-            _renderStartTime = _stopwatch.Elapsed.TotalSeconds;
         }
 
         private void EndFrame()
