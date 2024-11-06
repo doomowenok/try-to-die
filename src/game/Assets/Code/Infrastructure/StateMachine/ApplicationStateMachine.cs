@@ -47,6 +47,7 @@ namespace Code.Infrastructure.StateMachine
 
             TState state = GetState<TState>();
             _currentState = state;
+            Debug.Log($"Current state is {typeof(TState).Name}.");
             return state;
         }
 
