@@ -26,7 +26,7 @@ namespace Code.Core.Boot
             
             _stateMachine.AddState(_stateFactory.CreateState<BootState>());
 
-            _stateMachine.Enter<BootState>();
+            _stateMachine.Enter<BootState, string>("Game");
         }
     }
 }
