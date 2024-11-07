@@ -27,6 +27,7 @@ namespace Code.Infrastructure.MVVM.View
 
         public virtual void Release()
         {
+            Unsubscribe();
             Hide();
         }
     }

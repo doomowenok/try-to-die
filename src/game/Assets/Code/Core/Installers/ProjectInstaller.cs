@@ -1,5 +1,8 @@
+using Code.Common.Config;
+using Code.Common.Config.Installers;
 using Code.Common.SceneLoading.Installers;
 using Code.Core.Gameplay.Features.Loading.Installers;
+using Code.Core.UI.Installers;
 using Code.Infrastructure.MVVM.Installers;
 using Code.Infrastructure.Pool.Installers;
 using Code.Infrastructure.Resource.Installers;
@@ -13,7 +16,9 @@ namespace Code.Core.Installers
         public override void InstallBindings()
         {
             BindFeature<MvvmInstaller>();
+            BindFeature<ConfigProviderInstaller>();
             BindFeature<ObjectPoolInstaller>();
+            BindFeature<UIServiceInstaller>();
             BindFeature<ResourcesInstaller>();
             BindFeature<SceneLoaderInstaller>();
             BindFeature<LoadingInstaller>();

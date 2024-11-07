@@ -32,5 +32,10 @@ namespace Code.Infrastructure.MVVM.Factory
             _context.Inject(instance);
             return instance;
         }
+
+        public void DisposeWindow<TView>(TView instance) where TView : MonoBehaviour, IView
+        {
+            _objectPool.Release(instance);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Code.Common.SceneLoading;
 using Code.Core.Gameplay.Features.Loading;
+using Code.Core.UI;
 using Code.Infrastructure.MVVM.Factory;
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;
@@ -14,37 +15,31 @@ namespace Code.Core.Boot.States
     {
         private readonly IApplicationStateMachine _stateMachine;
         private readonly ISceneLoader _sceneLoader;
-        private readonly IWindowFactory _windowFactory;
+        private readonly IUIService _uiService;
         private readonly LoadingModel _loadingModel;
-        private readonly LoadingViewModel _loadingViewModel;
-
-        // TODO::Usage of WindowFactory is temp, need to create UI service that controls windows.
+        
         public BootState(
             IApplicationStateMachine stateMachine, 
             ISceneLoader sceneLoader, 
-            IWindowFactory windowFactory,
-            LoadingModel loadingModel,
-            LoadingViewModel loadingViewModel)
+            IUIService uiService,
+            LoadingModel loadingModel)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _windowFactory = windowFactory;
+            _uiService = uiService;
             _loadingModel = loadingModel;
-            _loadingViewModel = loadingViewModel;
         }
         
         public async UniTask Enter(string sceneName)
         {
-            LoadingView view = await _windowFactory.CreateWindow<LoadingView>("LoadingView");
-            view.Subscribe();
-            _loadingViewModel.Subscribe();
-            
-            
+            await _uiService.Show(UIViewType.Loading);
+
             DOTween.To(
-                () => _loadingModel.LoadingProgress.Value,
-                (value) => _loadingModel.ChangeLoadingProgress(value),
-                1.0f,
-                10.0f);
+                    () => _loadingModel.LoadingProgress.Value,
+                    (value) => _loadingModel.ChangeLoadingProgress(value),
+                    1.0f,
+                    10.0f)
+                .OnComplete(() => _uiService.Hide(UIViewType.Loading));
 
             // await _sceneLoader.LoadSceneAsync(sceneName, DebugProgress, DebugComplete);
         }
