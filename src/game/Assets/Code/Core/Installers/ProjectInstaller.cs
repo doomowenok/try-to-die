@@ -1,6 +1,7 @@
 using Code.Common.Config.Installers;
 using Code.Common.SceneLoading.Installers;
 using Code.Core.Gameplay.Features.Loading.Installers;
+using Code.Core.Services.Sprites.Installers;
 using Code.Core.Services.UI.Installers;
 using Code.Infrastructure.MVVM.Installers;
 using Code.Infrastructure.Pool.Installers;
@@ -18,6 +19,7 @@ namespace Code.Core.Installers
             BindFeature<ObjectPoolInstaller>();
             BindFeature<ResourcesInstaller>();
             BindFeature<UIServiceInstaller>();
+            BindFeature<SpriteServiceInstaller>();
             
             BindFeature<ConfigProviderInstaller>();
 

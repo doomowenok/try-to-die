@@ -8,7 +8,6 @@ using UnityEngine.U2D;
 
 namespace Code.Infrastructure.Resource
 {
-    // TODO::Watch how to work with Addressables in K-Syndicate course.
     public sealed class ResourceProvider : IResourceProvider
     {
         private readonly IDictionary<Type, MonoBehaviour> _loadedAssets = new Dictionary<Type, MonoBehaviour>(64);
@@ -50,6 +49,37 @@ namespace Code.Infrastructure.Resource
         {
             Addressables.Release(instance);
             _loadedAssets.Remove(typeof(TObject));
+        }
+
+        public async UniTask<SpriteAtlas> GetSpriteAtlas(string name)
+        {
+            AsyncOperationHandle<SpriteAtlas> handle = Addressables.LoadAssetAsync<SpriteAtlas>(name);
+            
+            while (!handle.IsDone)
+            {
+                await UniTask.Yield();
+            }
+
+            if (handle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError($"Failed to load asset: {name}");
+                return null;
+            }
+
+            SpriteAtlas result = handle.Result;
+
+            if (result == null)
+            {
+                Debug.LogError($"Possible missing component of type SpriteAtlas in asset {name}.");
+                return null;
+            }
+            
+            return result;
+        }
+
+        public void ReleaseSpriteAtlas(SpriteAtlas atlas)
+        {
+            Addressables.Release(atlas);
         }
     }
 }

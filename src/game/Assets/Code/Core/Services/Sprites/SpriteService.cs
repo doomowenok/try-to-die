@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using Code.Common.Config;
 using Code.Core.Services.Sprites.Configs;
 using Code.Infrastructure.Resource;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
 
 namespace Code.Core.Services.Sprites
 {
-    // TODO::Need some changes to make it work.
-    public sealed class SpriteService
+    public sealed class SpriteService : ISpriteService
     {
         private readonly Dictionary<int, SpriteAtlas> _loadedAtlases = new Dictionary<int, SpriteAtlas>();
         
@@ -21,7 +21,7 @@ namespace Code.Core.Services.Sprites
             _resourceProvider = resourceProvider;
         }
 
-        public Sprite GetSprite(AtlasSpriteType spriteType)
+        public async UniTask<Sprite> GetSprite(AtlasSpriteType spriteType)
         {
             AtlasConfig config = _configProvider.GetConfig<AtlasConfig>();
             int atlasId = spriteType.GetAtlasId();
@@ -32,7 +32,7 @@ namespace Code.Core.Services.Sprites
                 return atlas.GetSprite(spriteNameInAtlas);
             }
             
-            // atlas = _resourceProvider.GetSpriteAtlas(config.AtlasesName[atlasId]);
+            atlas = await _resourceProvider.GetSpriteAtlas(config.AtlasesName[atlasId]);
             _loadedAtlases.Add(atlasId, atlas);
             
             return atlas.GetSprite(spriteNameInAtlas);
