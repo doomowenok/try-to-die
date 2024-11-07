@@ -18,7 +18,7 @@ namespace Code.Infrastructure.Resource
                 return asset as TObject;
             }
             
-            AsyncOperationHandle<TObject> handle = Addressables.LoadAssetAsync<TObject>(name);
+            AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(name);
             
             while (!handle.IsDone)
             {
@@ -30,10 +30,18 @@ namespace Code.Infrastructure.Resource
                 Debug.LogError($"Failed to load asset: {name}");
                 return null;
             }
+
+            TObject result = handle.Result.GetComponent<TObject>();
+
+            if (result == null)
+            {
+                Debug.LogError($"Possible missing component of type {typeof(TObject).Name} in asset {name}.");
+                return null;
+            }
             
-            _loadedAssets.Add(typeof(TObject), handle.Result);
+            _loadedAssets.Add(typeof(TObject), result);
             
-            return handle.Result;
+            return result;
         }
 
         public void Release<TObject>(TObject instance) where TObject : MonoBehaviour

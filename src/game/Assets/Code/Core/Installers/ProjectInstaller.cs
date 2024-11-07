@@ -1,5 +1,8 @@
 using Code.Common.SceneLoading.Installers;
-using Code.Core.Boot.Installers;
+using Code.Core.Gameplay.Features.Loading.Installers;
+using Code.Infrastructure.MVVM.Installers;
+using Code.Infrastructure.Pool.Installers;
+using Code.Infrastructure.Resource.Installers;
 using Code.Infrastructure.StateMachine.Installers;
 using Zenject;
 
@@ -9,10 +12,13 @@ namespace Code.Core.Installers
     {
         public override void InstallBindings()
         {
+            BindFeature<MvvmInstaller>();
+            BindFeature<ObjectPoolInstaller>();
+            BindFeature<ResourcesInstaller>();
             BindFeature<SceneLoaderInstaller>();
+            BindFeature<LoadingInstaller>();
             
             BindFeature<StateMachineInstaller>();
-            BindFeature<BootInstaller>();
         }
 
         private void BindFeature<TInstaller>() where TInstaller : Installer

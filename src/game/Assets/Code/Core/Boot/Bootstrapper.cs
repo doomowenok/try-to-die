@@ -8,7 +8,7 @@ namespace Code.Core.Boot
 {
     public sealed class Bootstrapper : MonoBehaviour
     {
-        [SerializeField] private bool _logginingEnabled;
+        [SerializeField] private bool _logEnabled;
         
         private IApplicationStateMachine _stateMachine;
         private IStateFactory _stateFactory;
@@ -22,7 +22,7 @@ namespace Code.Core.Boot
 
         public void Start()
         {
-            Debug.unityLogger.logEnabled = _logginingEnabled;
+            Debug.unityLogger.logEnabled = _logEnabled;
             
             _stateMachine.AddState(_stateFactory.CreateState<BootState>());
 

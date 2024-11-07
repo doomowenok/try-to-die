@@ -15,9 +15,19 @@ namespace Code.Infrastructure.MVVM.View
         public abstract void Subscribe();
         public abstract void Unsubscribe();
 
-        public virtual void Release()
+        public virtual void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public virtual void Hide()
         {
             gameObject.SetActive(false);
+        }
+
+        public virtual void Release()
+        {
+            Hide();
         }
     }
 }
