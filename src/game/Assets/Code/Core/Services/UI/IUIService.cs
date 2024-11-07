@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace Code.Core.UI
+namespace Code.Core.Services.UI
 {
     public interface IUIService
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Core.UI
+namespace Code.Core.Services.UI
 {
     [Serializable]
     public enum UIViewType

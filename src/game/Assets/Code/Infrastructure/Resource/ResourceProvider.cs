@@ -4,9 +4,11 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.U2D;
 
 namespace Code.Infrastructure.Resource
 {
+    // TODO::Watch how to work with Addressables in K-Syndicate course.
     public sealed class ResourceProvider : IResourceProvider
     {
         private readonly IDictionary<Type, MonoBehaviour> _loadedAssets = new Dictionary<Type, MonoBehaviour>(64);

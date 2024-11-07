@@ -1,6 +1,6 @@
 using Code.Common.SceneLoading;
 using Code.Core.Gameplay.Features.Loading;
-using Code.Core.UI;
+using Code.Core.Services.UI;
 using Code.Infrastructure.MVVM.Factory;
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;

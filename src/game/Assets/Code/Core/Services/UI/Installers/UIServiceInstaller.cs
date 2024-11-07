@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Code.Core.UI.Installers
+namespace Code.Core.Services.UI.Installers
 {
     public sealed class UIServiceInstaller : Installer
     {

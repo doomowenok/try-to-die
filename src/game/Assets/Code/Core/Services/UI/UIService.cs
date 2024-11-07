@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Common.Config;
 using Code.Core.Gameplay.Features.Loading;
-using Code.Core.UI.Configs;
+using Code.Core.Services.UI.Configs;
 using Code.Infrastructure.MVVM.Factory;
 using Code.Infrastructure.MVVM.View;
 using Code.Infrastructure.MVVM.ViewModel;
@@ -10,7 +10,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Core.UI
+namespace Code.Core.Services.UI
 {
     public sealed class UIService : IUIService
     {

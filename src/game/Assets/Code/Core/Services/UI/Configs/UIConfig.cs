@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Code.Core.UI.Configs
+namespace Code.Core.Services.UI.Configs
 {
     [CreateAssetMenu(fileName = nameof(UIConfig), menuName = "Configs/UIConfig")]
     public sealed class UIConfig : SerializedScriptableObject
