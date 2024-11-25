@@ -6,7 +6,7 @@ namespace Code.Core.Services.Sprites
         {
             return (int)spriteType switch
             {
-                (>= 100 and <= 103) => 100,
+                (>= 100 and <= 199) => 100,
                 (>= 200 and <= 202) => 200,
                 _ => -1,
             };

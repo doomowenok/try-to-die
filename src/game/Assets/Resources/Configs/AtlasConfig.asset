@@ -40,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
@@ -49,43 +49,7 @@ MonoBehaviour:
       Data: 100
     - Name: $v
       Entry: 1
-      Data: Grass_0_0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 101
-    - Name: $v
-      Entry: 1
-      Data: Grass_1_0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 102
-    - Name: $v
-      Entry: 1
-      Data: Grass_2_0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 103
-    - Name: $v
-      Entry: 1
-      Data: Grass_3_0
+      Data: Landscape_0_0
     - Name: 
       Entry: 8
       Data: 
@@ -108,7 +72,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
@@ -117,19 +81,7 @@ MonoBehaviour:
       Data: 100
     - Name: $v
       Entry: 1
-      Data: SA_Grass
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 200
-    - Name: $v
-      Entry: 1
-      Data: SA_Landscape
+      Data: SA_Map
     - Name: 
       Entry: 8
       Data: 

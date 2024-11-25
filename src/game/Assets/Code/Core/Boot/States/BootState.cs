@@ -1,6 +1,7 @@
 using Code.Common.SceneLoading;
 using Code.Core.Gameplay.Features.Loading;
 using Code.Core.Gameplay.Features.Map;
+using Code.Core.Services.Sprites;
 using Code.Core.Services.UI;
 using Code.Infrastructure.MVVM.Factory;
 using Code.Infrastructure.Resource;
@@ -19,23 +20,17 @@ namespace Code.Core.Boot.States
         private readonly ISceneLoader _sceneLoader;
         private readonly IUIService _uiService;
         private readonly LoadingModel _loadingModel;
-        private readonly DiContainer _container;
-        private readonly IResourceProvider _resourceProvider;
 
         public BootState(
             IApplicationStateMachine stateMachine, 
             ISceneLoader sceneLoader, 
             IUIService uiService,
-            LoadingModel loadingModel,
-            DiContainer container,
-            IResourceProvider resourceProvider)
+            LoadingModel loadingModel)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _uiService = uiService;
             _loadingModel = loadingModel;
-            _container = container;
-            _resourceProvider = resourceProvider;
         }
         
         public async UniTask Enter(string sceneName)
@@ -48,10 +43,7 @@ namespace Code.Core.Boot.States
                     1.0f,
                     10.0f)
                 .OnComplete(() => _uiService.Hide(UIViewType.Loading));
-
-            MapPart mapPart = await _resourceProvider.Get<MapPart>("MapPart");
-            _container.InstantiatePrefabForComponent<MapPart>(mapPart);
-
+            
             // await _sceneLoader.LoadSceneAsync(sceneName, DebugProgress, DebugComplete);
         }
 

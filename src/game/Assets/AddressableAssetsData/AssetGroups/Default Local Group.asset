@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 875a997fa8a73482fb26190f25eb89eb
   m_SerializeEntries:
-  - m_GUID: 5caee410f8e3441eb88dd493256cefb5
-    m_Address: SA_Grass
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b0b27ba7b301416a8c85d0970e656a5
     m_Address: MapPart
     m_ReadOnly: 0
@@ -30,8 +25,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a179d4a10b38a4c669e043ffcb64680d
-    m_Address: SA_Landscape
+  - m_GUID: e8b473003090148f9a6c0b48a99f7f27
+    m_Address: SA_Map
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
