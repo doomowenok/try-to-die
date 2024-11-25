@@ -1,0 +1,10 @@
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/Dependencies.deps.json
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/Dependencies.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/bin/Release/netstandard2.1/Dependencies.pdb
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.csproj.AssemblyReference.cache
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.GeneratedMSBuildEditorConfig.editorconfig
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.AssemblyInfoInputs.cache
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.AssemblyInfo.cs
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.csproj.CoreCompileInputs.cache
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.dll
+/Users/doomowenok/Projects/try-to-die/src/Dependencies/Dependencies/obj/Release/netstandard2.1/Dependencies.pdb
