@@ -1,3 +1,4 @@
+using System.Linq;
 using Code.Infrastructure.MVVM.View;
 using Code.Infrastructure.Pool;
 using Code.Infrastructure.Resource;
@@ -25,7 +26,14 @@ namespace Code.Infrastructure.MVVM.Factory
             if (!_objectPool.TryRent<TView>(out TView instance))
             {
                 TView viewPrefab = await _resourceProvider.Get<TView>(name);
-                instance = Object.Instantiate(viewPrefab);    
+                AsyncInstantiateOperation<TView> operation = Object.InstantiateAsync(viewPrefab);
+
+                while (!operation.isDone)
+                {
+                    await UniTask.Yield();
+                }
+
+                instance = operation.Result.First();
             }
 
             instance.transform.SetParent(parent);
