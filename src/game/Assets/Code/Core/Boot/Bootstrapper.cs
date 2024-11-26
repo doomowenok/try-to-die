@@ -1,4 +1,5 @@
 using Code.Core.Boot.States;
+using Code.Core.Gameplay.States;
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.Factory;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace Code.Core.Boot
             Debug.unityLogger.logEnabled = _logEnabled;
             
             _stateMachine.AddState(_stateFactory.CreateState<BootState>());
+            _stateMachine.AddState(_stateFactory.CreateState<GameplayState>());
 
             _stateMachine.Enter<BootState, string>("Game");
         }

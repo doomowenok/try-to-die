@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Code.Common.Config;
 using Code.Core.Gameplay.Features.Loading;
 using Code.Core.Services.UI.Configs;
+using Code.Infrastructure.Config;
 using Code.Infrastructure.MVVM.Factory;
 using Code.Infrastructure.MVVM.View;
 using Code.Infrastructure.MVVM.ViewModel;

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Code.Common.Config;
 using Code.Core.Services.Sprites.Configs;
+using Code.Infrastructure.Config;
 using Code.Infrastructure.Resource;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

@@ -1,12 +1,13 @@
-using Code.Common.Config.Installers;
-using Code.Common.SceneLoading.Installers;
 using Code.Core.Gameplay.Features.Loading.Installers;
 using Code.Core.Gameplay.Features.Map.Installers;
 using Code.Core.Services.Sprites.Installers;
 using Code.Core.Services.UI.Installers;
+using Code.Infrastructure.Config.Installers;
+using Code.Infrastructure.EcsRunner.Installers;
 using Code.Infrastructure.MVVM.Installers;
 using Code.Infrastructure.Pool.Installers;
 using Code.Infrastructure.Resource.Installers;
+using Code.Infrastructure.SceneLoading.Installers;
 using Code.Infrastructure.StateMachine.Installers;
 using Zenject;
 
@@ -21,11 +22,12 @@ namespace Code.Core.Installers
             BindFeature<ResourcesInstaller>();
             BindFeature<UIServiceInstaller>();
             BindFeature<SpriteServiceInstaller>();
-            
+            BindFeature<EcsRunnerInstaller>();
+
             BindFeature<ConfigProviderInstaller>();
 
             BindFeature<StateMachineInstaller>();
-            
+
             BindFeature<SceneLoaderInstaller>();
             BindFeature<LoadingInstaller>();
             BindFeature<MapInstaller>();

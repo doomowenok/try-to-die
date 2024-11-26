@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Code.Common.SceneLoading.Installers
+namespace Code.Infrastructure.SceneLoading.Installers
 {
     public sealed class SceneLoaderInstaller : Installer
     {

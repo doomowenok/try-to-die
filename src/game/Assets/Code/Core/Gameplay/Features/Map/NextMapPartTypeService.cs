@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Common.Config;
 using Code.Core.Extensions.System;
+using Code.Infrastructure.Config;
 
 namespace Code.Core.Gameplay.Features.Map
 {

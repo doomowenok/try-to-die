@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Code.Common.Config
+namespace Code.Infrastructure.Config
 {
     public interface IConfigProvider
     {

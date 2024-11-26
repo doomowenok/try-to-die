@@ -1,16 +1,12 @@
-using Code.Common.SceneLoading;
 using Code.Core.Gameplay.Features.Loading;
-using Code.Core.Gameplay.Features.Map;
-using Code.Core.Services.Sprites;
+using Code.Core.Gameplay.States;
 using Code.Core.Services.UI;
-using Code.Infrastructure.MVVM.Factory;
-using Code.Infrastructure.Resource;
+using Code.Infrastructure.SceneLoading;
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Core.Boot.States
 {
@@ -41,10 +37,12 @@ namespace Code.Core.Boot.States
                     () => _loadingModel.LoadingProgress.Value,
                     (value) => _loadingModel.ChangeLoadingProgress(value),
                     1.0f,
-                    10.0f)
-                .OnComplete(() => _uiService.Hide(UIViewType.Loading));
-            
-            // await _sceneLoader.LoadSceneAsync(sceneName, DebugProgress, DebugComplete);
+                    3.0f)
+                .OnComplete(() =>
+                {
+                    _uiService.Hide(UIViewType.Loading);
+                    _sceneLoader.LoadSceneAsync(sceneName, DebugProgress, DebugComplete).Forget();
+                });
         }
 
         public UniTask Exit()
@@ -63,7 +61,7 @@ namespace Code.Core.Boot.States
         private void DebugComplete()
         {
             Debug.Log($"Loading scene complete.");
-            _loadingModel.ChangeLoadingProgress(33.0f);
+            _stateMachine.Enter<GameplayState>().Forget();
         }
     }
 }

@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Code.Common.Config.Installers
+namespace Code.Infrastructure.Config.Installers
 {
     public sealed class ConfigProviderInstaller : Installer
     {

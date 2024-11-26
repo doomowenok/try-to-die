@@ -14,7 +14,7 @@ namespace Code.Core.Gameplay.Features.Input
     {
         public float Horizontal;
         public float Vertical;
-        public bool IsJump;
+        public bool IsAttack;
     }
 
     [Il2CppSetOption(Option.NullChecks, false)]
@@ -39,14 +39,14 @@ namespace Code.Core.Gameplay.Features.Input
         {
             float horizontal = UnityEngine.Input.GetAxis("Horizontal");
             float vertical = UnityEngine.Input.GetAxis("Vertical");
-            bool isJump = UnityEngine.Input.GetButtonDown("Jump");
+            bool isAttack = UnityEngine.Input.GetButtonDown("Jump");
             
             foreach (Entity entity in _inputs)
             {
                 ref GameplayInputComponent input = ref _inputsStash.Get(entity);
                 input.Horizontal = horizontal;
                 input.Vertical = vertical;
-                input.IsJump = isJump;
+                input.IsAttack = isAttack;
             }
         }
     }
