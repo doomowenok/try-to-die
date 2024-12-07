@@ -1,12 +1,12 @@
 using Code.Infrastructure.MVVM.View;
-// using TMPro;
+using TMPro;
 using UnityEngine;
 
 namespace Code.Core.Gameplay.Features.Loading
 {
     public sealed class LoadingView : BaseView<LoadingViewModel>
     {
-        // [SerializeField] private TMP_Text _loadingProgressText;
+        [SerializeField] private TMP_Text loadingProgressText;
         
         public override void Subscribe()
         {
@@ -20,7 +20,7 @@ namespace Code.Core.Gameplay.Features.Loading
 
         private void UpdateProgress(float progress)
         {
-            // _loadingProgressText.SetText(progress.ToString("P"));
+            loadingProgressText.SetText(progress.ToString("P"));
         }
     }
 }

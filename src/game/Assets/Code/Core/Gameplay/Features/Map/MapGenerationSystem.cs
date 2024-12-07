@@ -17,7 +17,7 @@ namespace Code.Core.Gameplay.Features.Map
             SpriteRenderer spriteRenderer = GameObject.CreatePrimitive(PrimitiveType.Sphere).GetComponent<SpriteRenderer>();
             Entity entity = World.CreateEntity();
             ref SpriteRendererComponent component = ref entity.AddComponent<SpriteRendererComponent>();
-            component.Renderer = spriteRenderer;
+            component.value = spriteRenderer;
         }
 
         public override void Dispose()

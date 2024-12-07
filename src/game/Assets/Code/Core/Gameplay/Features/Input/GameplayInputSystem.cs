@@ -1,4 +1,3 @@
-using System;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Unity.IL2CPP.CompilerServices;
@@ -6,17 +5,6 @@ using UnityEngine;
 
 namespace Code.Core.Gameplay.Features.Input
 {
-    [Serializable]
-    [Il2CppSetOption(Option.NullChecks, false)]
-    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
-    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct GameplayInputComponent : IComponent
-    {
-        public float Horizontal;
-        public float Vertical;
-        public bool IsAttack;
-    }
-
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
@@ -37,17 +25,19 @@ namespace Code.Core.Gameplay.Features.Input
 
         public override void OnUpdate(float deltaTime)
         {
-            float horizontal = UnityEngine.Input.GetAxis("Horizontal");
-            float vertical = UnityEngine.Input.GetAxis("Vertical");
-            bool isAttack = UnityEngine.Input.GetButtonDown("Jump");
-            
-            foreach (Entity entity in _inputs)
-            {
-                ref GameplayInputComponent input = ref _inputsStash.Get(entity);
-                input.Horizontal = horizontal;
-                input.Vertical = vertical;
-                input.IsAttack = isAttack;
-            }
+            // float horizontal = UnityEngine.Input.GetAxis("Horizontal");
+            // float vertical = UnityEngine.Input.GetAxis("Vertical");
+            // bool isAttack = UnityEngine.Input.GetButtonDown("Jump");
+            // Vector3 mousePosition = UnityEngine.Input.mousePosition;
+            //
+            // foreach (Entity entity in _inputs)
+            // {
+            //     ref GameplayInputComponent input = ref _inputsStash.Get(entity);
+            //     input.mousePosition = mousePosition;
+            //     input.horizontal = horizontal;
+            //     input.vertical = vertical;
+            //     input.isAttack = isAttack;
+            // }
         }
     }
 }
