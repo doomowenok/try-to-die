@@ -15,6 +15,5 @@ namespace Code.Core.Gameplay.Features.Input
         public Vector3 mousePosition;
         public float horizontal;
         public float vertical;
-        public bool isAttack;
     }
 }

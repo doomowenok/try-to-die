@@ -1,3 +1,4 @@
+using Code.Core.Gameplay.Features.Input.Installers;
 using Code.Core.Gameplay.Features.Loading.Installers;
 using Code.Core.Gameplay.Features.Map.Installers;
 using Code.Core.Services.Sprites.Installers;
@@ -28,6 +29,7 @@ namespace Code.Core.Installers
 
             BindFeature<StateMachineInstaller>();
 
+            BindFeature<InputInstaller>();
             BindFeature<SceneLoaderInstaller>();
             BindFeature<LoadingInstaller>();
             BindFeature<MapInstaller>();

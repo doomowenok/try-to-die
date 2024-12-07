@@ -2,6 +2,7 @@ using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Core.Gameplay.Features.Input
 {
@@ -11,9 +12,17 @@ namespace Code.Core.Gameplay.Features.Input
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(GameplayInputSystem))]
     public sealed class GameplayInputSystem : UpdateSystem
     {
+        private GameplayInput _gameplayInput;
+        
         private Filter _inputs;
         private Stash<GameplayInputComponent> _inputsStash;
 
+        [Inject]
+        private void Construct(GameplayInput gameplayInput)
+        {
+            _gameplayInput = gameplayInput;
+        }
+        
         public override void OnAwake()
         {
             Entity input = World.CreateEntity();
@@ -21,23 +30,22 @@ namespace Code.Core.Gameplay.Features.Input
 
             _inputs = World.Filter.With<GameplayInputComponent>().Build();
             _inputsStash = World.GetStash<GameplayInputComponent>();
+            
+            _gameplayInput.Enable();
         }
 
         public override void OnUpdate(float deltaTime)
         {
-            // float horizontal = UnityEngine.Input.GetAxis("Horizontal");
-            // float vertical = UnityEngine.Input.GetAxis("Vertical");
-            // bool isAttack = UnityEngine.Input.GetButtonDown("Jump");
-            // Vector3 mousePosition = UnityEngine.Input.mousePosition;
-            //
-            // foreach (Entity entity in _inputs)
-            // {
-            //     ref GameplayInputComponent input = ref _inputsStash.Get(entity);
-            //     input.mousePosition = mousePosition;
-            //     input.horizontal = horizontal;
-            //     input.vertical = vertical;
-            //     input.isAttack = isAttack;
-            // }
+            Vector2 moveInput = _gameplayInput.Player.Move.ReadValue<Vector2>();
+            Vector2 mousePosition = _gameplayInput.Player.Mouse.ReadValue<Vector2>();
+            
+            foreach (Entity entity in _inputs)
+            {
+                ref GameplayInputComponent input = ref _inputsStash.Get(entity);
+                input.mousePosition = mousePosition;
+                input.horizontal = moveInput.x;
+                input.vertical = moveInput.y;
+            }
         }
     }
 }

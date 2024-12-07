@@ -1,3 +1,4 @@
+using Code.Core.Constants;
 using Code.Core.Gameplay.Common;
 using Code.Core.Gameplay.Features.Input;
 using Scellecs.Morpeh;
@@ -44,7 +45,10 @@ namespace Code.Core.Gameplay.Features.Player
                     ref GameplayInputComponent inputComponent = ref input.GetComponent<GameplayInputComponent>();
                     ref TransformComponent transformComponent = ref player.GetComponent<TransformComponent>();
 
-                    Vector3 mousePositionWorld = camera.ScreenToWorldPoint(new Vector3(inputComponent.mousePosition.x, inputComponent.mousePosition.y, 0.0f));
+                    Vector3 mousePositionWorld = camera.ScreenToWorldPoint(new Vector3(
+                        inputComponent.mousePosition.x, 
+                        inputComponent.mousePosition.y,
+                        CameraConstants.ZValueForWorldToScreenPoint));
                     Vector3 direction = mousePositionWorld - transformComponent.value.position;
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     transformComponent.value.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);;
