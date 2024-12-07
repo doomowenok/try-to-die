@@ -1,4 +1,5 @@
 using Code.Core.Gameplay.Common;
+using Code.Core.Gameplay.Features.Health;
 using Code.Core.Gameplay.Features.Move;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
@@ -37,6 +38,9 @@ namespace Code.Core.Gameplay.Features.Player
             
             ref BodyComponent bodyComponent = ref playerEntity.AddComponent<BodyComponent>();
             bodyComponent.Value = playerProvider.Body;
+            
+            ref HealthComponent healthComponent = ref playerEntity.AddComponent<HealthComponent>();
+            healthComponent.Value = 100.0f;
         }
 
         public override void Dispose()

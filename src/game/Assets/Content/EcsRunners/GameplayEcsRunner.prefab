@@ -65,6 +65,8 @@ MonoBehaviour:
   - enabled: 1
     system: {fileID: 11400000, guid: 32f46b8ffd5924f2c988530d99219f7e, type: 2}
   - enabled: 1
+    system: {fileID: 11400000, guid: 55524f7c7ce634709ac1e7b0b2999a9a, type: 2}
+  - enabled: 1
     system: {fileID: 11400000, guid: 8739c3a3fc1054f06b9acc24937ad2cc, type: 2}
   fixedUpdateSystems: []
   lateUpdateSystems: []

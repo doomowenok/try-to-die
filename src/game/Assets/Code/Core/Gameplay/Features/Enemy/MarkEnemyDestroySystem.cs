@@ -1,5 +1,6 @@
 using Code.Core.Gameplay.Common;
 using Code.Core.Gameplay.Features.Death;
+using Code.Core.Gameplay.Features.Health;
 using Code.Core.Gameplay.Features.Player;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
@@ -27,6 +28,7 @@ namespace Code.Core.Gameplay.Features.Enemy
             _players = World.Filter
                 .With<PlayerComponent>()
                 .With<TransformComponent>()
+                .With<HealthComponent>()
                 .Build();
         }
 
@@ -37,6 +39,7 @@ namespace Code.Core.Gameplay.Features.Enemy
                 foreach (Entity enemy in _enemies)
                 {
                     ref TransformComponent playerTransformComponent = ref player.GetComponent<TransformComponent>();
+                    ref HealthComponent playerHealth = ref player.GetComponent<HealthComponent>();
                     ref TransformComponent enemyTransformComponent = ref enemy.GetComponent<TransformComponent>();
 
                     float distance = Vector3.Distance(
@@ -46,6 +49,7 @@ namespace Code.Core.Gameplay.Features.Enemy
                     if (distance < 1.0f)
                     {
                         enemy.AddComponent<DeathComponent>();
+                        playerHealth.Value -= 20.0f;
                     }
                 }   
             }
