@@ -2,7 +2,6 @@ using System;
 using Scellecs.Morpeh;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Core.Gameplay.Features.Input
 {

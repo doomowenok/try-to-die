@@ -37,7 +37,7 @@ namespace Code.Core.Boot.States
                     () => _loadingModel.LoadingProgress.Value,
                     (value) => _loadingModel.ChangeLoadingProgress(value),
                     1.0f,
-                    3.0f)
+                    1.0f)
                 .OnComplete(() =>
                 {
                     _uiService.Hide(UIViewType.Loading);

@@ -23,6 +23,9 @@ namespace Code.Core.Gameplay.Features.Player
             ref PlayerComponent playerComponent = ref playerEntity.AddComponent<PlayerComponent>();
             playerComponent.IsMoving = false;
             
+            ref GameObjectComponent gameObjectComponent = ref playerEntity.AddComponent<GameObjectComponent>();
+            gameObjectComponent.Value = playerObject;
+            
             ref TransformComponent transformComponent = ref playerEntity.AddComponent<TransformComponent>();
             transformComponent.Value = playerProvider.transform;
 
