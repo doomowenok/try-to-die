@@ -1,12 +1,11 @@
+using Code.Core.Constants;
 using Code.Core.Gameplay.Common;
 using Code.Core.Gameplay.Features.Input;
-using Code.Infrastructure.Resource;
-using Code.Infrastructure.SceneLoading;
+using Code.Core.Gameplay.Features.Move;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Core.Gameplay.Features.Player
 {
@@ -24,6 +23,7 @@ namespace Code.Core.Gameplay.Features.Player
             _players = World.Filter
                 .With<PlayerComponent>()
                 .With<TransformComponent>()
+                .With<DirectionComponent>()
                 .Build();
 
             _inputs = World.Filter.With<GameplayInputComponent>().Build();
@@ -35,11 +35,14 @@ namespace Code.Core.Gameplay.Features.Player
             {
                 foreach (Entity input in _inputs)
                 {
-                    ref TransformComponent transformComponent = ref player.GetComponent<TransformComponent>();
+                    ref PlayerComponent playerComponent = ref player.GetComponent<PlayerComponent>();
+                    ref DirectionComponent directionComponent = ref player.GetComponent<DirectionComponent>();
+                    
                     ref GameplayInputComponent inputComponent = ref input.GetComponent<GameplayInputComponent>();
 
-                    Vector3 direction = new Vector3(inputComponent.horizontal, inputComponent.vertical, 0.0f) * deltaTime;
-                    transformComponent.value.position += direction;
+                    Vector3 direction = new Vector3(inputComponent.horizontal, inputComponent.vertical, 0.0f);
+                    directionComponent.Value = direction;
+                    playerComponent.IsMoving = Vector3.Magnitude(direction) > InputConstants.InputEpsilon;
                 }
             }
         }

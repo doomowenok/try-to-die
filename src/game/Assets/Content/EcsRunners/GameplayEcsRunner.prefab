@@ -53,7 +53,11 @@ MonoBehaviour:
   - enabled: 1
     system: {fileID: 11400000, guid: ff401303d826448ff9d1c5fcd97167e4, type: 2}
   - enabled: 1
-    system: {fileID: 11400000, guid: f4acd967df4244f22aaf194b98a56930, type: 2}
+    system: {fileID: 11400000, guid: 51f4da7237b174c11b2c0dad4bceeed4, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: f65d27a43421d4bc7965806da41fe471, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: f2553164ba17b4e5fbc14a4fccd264f0, type: 2}
   fixedUpdateSystems: []
   lateUpdateSystems: []
   cleanupSystems: []

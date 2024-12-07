@@ -11,6 +11,6 @@ namespace Code.Core.Gameplay.Common
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     public struct TransformComponent : IComponent
     {
-        public Transform value;
+        public Transform Value;
     }
 }

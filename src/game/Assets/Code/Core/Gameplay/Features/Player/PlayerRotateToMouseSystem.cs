@@ -49,9 +49,9 @@ namespace Code.Core.Gameplay.Features.Player
                         inputComponent.mousePosition.x, 
                         inputComponent.mousePosition.y,
                         CameraConstants.ZValueForWorldToScreenPoint));
-                    Vector3 direction = mousePositionWorld - transformComponent.value.position;
+                    Vector3 direction = mousePositionWorld - transformComponent.Value.position;
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                    transformComponent.value.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);;
+                    transformComponent.Value.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);;
                 }
             }
         }

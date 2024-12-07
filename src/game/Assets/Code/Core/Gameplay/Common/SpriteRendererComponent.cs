@@ -11,6 +11,6 @@ namespace Code.Core.Gameplay.Common
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     public struct SpriteRendererComponent : IComponent
     {
-        public SpriteRenderer value;
+        public SpriteRenderer Value;
     }
 }
