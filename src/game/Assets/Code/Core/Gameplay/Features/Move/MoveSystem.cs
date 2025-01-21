@@ -1,8 +1,10 @@
 using Code.Core.Gameplay.Common;
+using Code.Core.Services.Time;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Core.Gameplay.Features.Move
 {
@@ -12,7 +14,14 @@ namespace Code.Core.Gameplay.Features.Move
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(MoveSystem))]
     public sealed class MoveSystem : UpdateSystem
     {
+        private ITimeService _time;
         private Filter _directions;
+
+        [Inject]
+        private void Construct(ITimeService time)
+        {
+            _time = time;
+        }
 
         public override void OnAwake()
         {
@@ -29,7 +38,7 @@ namespace Code.Core.Gameplay.Features.Move
                 ref TransformComponent transformComponent = ref direction.GetComponent<TransformComponent>();
                 ref DirectionComponent directionComponent = ref direction.GetComponent<DirectionComponent>();
 
-                transformComponent.Value.position += directionComponent.Value * deltaTime;
+                transformComponent.Value.position += directionComponent.Value * _time.DeltaTime;
             }
         }
     }

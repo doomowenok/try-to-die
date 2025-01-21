@@ -15,7 +15,6 @@ namespace Code.Core.Gameplay.Features.Input
         private GameplayInput _gameplayInput;
         
         private Filter _inputs;
-        private Stash<GameplayInputComponent> _inputsStash;
 
         [Inject]
         private void Construct(GameplayInput gameplayInput)
@@ -29,7 +28,6 @@ namespace Code.Core.Gameplay.Features.Input
             input.SetComponent(new GameplayInputComponent());
 
             _inputs = World.Filter.With<GameplayInputComponent>().Build();
-            _inputsStash = World.GetStash<GameplayInputComponent>();
             
             _gameplayInput.Enable();
         }
@@ -41,7 +39,7 @@ namespace Code.Core.Gameplay.Features.Input
             
             foreach (Entity entity in _inputs)
             {
-                ref GameplayInputComponent input = ref _inputsStash.Get(entity);
+                ref GameplayInputComponent input = ref entity.GetComponent<GameplayInputComponent>();
                 input.mousePosition = mousePosition;
                 input.horizontal = moveInput.x;
                 input.vertical = moveInput.y;
