@@ -1,6 +1,4 @@
-using System.Linq;
 using Code.Infrastructure.Config;
-using Cysharp.Threading.Tasks;
 using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
@@ -19,16 +17,9 @@ namespace Code.Infrastructure.EcsRunner
             _runnerConfig = configProvider.GetConfig<EcsRunnerConfig>();
         }
         
-        public async UniTask<Installer> CreateRunner(EcsRunnerType runnerType)
+        public Installer CreateRunner(EcsRunnerType runnerType)
         {
-            AsyncInstantiateOperation<Installer> operation = Object.InstantiateAsync(_runnerConfig.Runners[runnerType]);
-            
-            while (!operation.isDone)
-            {
-                await UniTask.Yield();
-            }
-
-            Installer runner = operation.Result.First();
+            Installer runner = Object.Instantiate(_runnerConfig.Runners[runnerType]);
             
             runner.initializers.ForEach(system => _container.Inject(system));
             runner.updateSystems.ForEach(system => _container.Inject(system.System));

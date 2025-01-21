@@ -13,14 +13,16 @@ namespace Code.Core.Gameplay.States
             _ecsRunnerController = ecsRunnerController;
         }
         
-        public async UniTask Enter()
+        public UniTask Enter()
         {
-            await _ecsRunnerController.EnableRunner(EcsRunnerType.GameplayRunner);
+            _ecsRunnerController.EnableRunner(EcsRunnerType.GameplayRunner);
+            return UniTask.CompletedTask;
         }
 
-        public async UniTask Exit()
+        public UniTask Exit()
         {
-            await _ecsRunnerController.DisableRunner(EcsRunnerType.GameplayRunner);
+            _ecsRunnerController.DisableRunner(EcsRunnerType.GameplayRunner);
+            return UniTask.CompletedTask;
         }
     }
 }

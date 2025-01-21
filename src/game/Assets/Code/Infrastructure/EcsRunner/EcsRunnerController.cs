@@ -15,7 +15,7 @@ namespace Code.Infrastructure.EcsRunner
             _ecsRunnerFactory = ecsRunnerFactory;
         }
 
-        public async UniTask EnableRunner(EcsRunnerType runnerType)
+        public void EnableRunner(EcsRunnerType runnerType)
         {
             if (_activeRunners.ContainsKey(runnerType))
             {
@@ -23,11 +23,11 @@ namespace Code.Infrastructure.EcsRunner
                 return;
             }
             
-            Installer runner = await _ecsRunnerFactory.CreateRunner(runnerType);
+            Installer runner = _ecsRunnerFactory.CreateRunner(runnerType);
             _activeRunners.Add(runnerType, runner);
         }
 
-        public UniTask DisableRunner(EcsRunnerType runnerType)
+        public void DisableRunner(EcsRunnerType runnerType)
         {
             if (_activeRunners.TryGetValue(runnerType, out Installer runner))
             {
@@ -38,8 +38,6 @@ namespace Code.Infrastructure.EcsRunner
             {
                 Debug.LogError($"Runner {runnerType} not active or created before.");
             }
-
-            return UniTask.CompletedTask;
         }
     }
 }

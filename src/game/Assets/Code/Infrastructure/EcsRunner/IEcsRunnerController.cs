@@ -1,10 +1,8 @@
-using Cysharp.Threading.Tasks;
-
 namespace Code.Infrastructure.EcsRunner
 {
     public interface IEcsRunnerController
     {
-        UniTask EnableRunner(EcsRunnerType runnerType);
-        UniTask DisableRunner(EcsRunnerType runnerType);
+        void EnableRunner(EcsRunnerType runnerType);
+        void DisableRunner(EcsRunnerType runnerType);
     }
 }
