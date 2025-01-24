@@ -1,6 +1,7 @@
 using Code.Core.Gameplay.Features.Input.Installers;
 using Code.Core.Gameplay.Features.Loading.Installers;
 using Code.Core.Gameplay.Features.Map.Installers;
+using Code.Core.Services.Savings.Installers;
 using Code.Core.Services.Sprites.Installers;
 using Code.Core.Services.Time;
 using Code.Core.Services.Time.Installers;
@@ -26,6 +27,7 @@ namespace Code.Core.Installers
             BindFeature<UIServiceInstaller>();
             BindFeature<SpriteServiceInstaller>();
             BindFeature<TimeServiceInstaller>();
+            BindFeature<SavingsInstaller>();
             BindFeature<EcsRunnerInstaller>();
 
             BindFeature<ConfigProviderInstaller>();
